@@ -10,14 +10,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && node --import=tsx --env-file=.env bin/deploy.ts"
+    "deploy": "astro build && node --import=tsx --env-file=.env scripts/deploy/deploy.ts"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.19",
     "@astrojs/svelte": "^9.1.2",
+    "@praha/byethrow": "^0.13.0",
     "astro": "^7.4.7",
-    "effect": "^4.1.2",
-    "neverthrow": "^8.2.0",
+    "astro-relative-links": "^0.4.2",
     "svelte": "^5.57.3",
     "typescript": "^6.0.3"
   },
