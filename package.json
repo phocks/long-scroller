@@ -1,5 +1,5 @@
 {
-  "name": "waterfall",
+  "name": "long-scroller",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
@@ -20,6 +20,7 @@
     "astro": "^7.4.7",
     "astro-relative-links": "^0.4.2",
     "svelte": "^5.57.3",
+    "ts-pattern": "^5.9.2",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
