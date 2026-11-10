@@ -3,7 +3,7 @@ import { Result } from "@praha/byethrow";
 import { readFtpCredentials } from "./credentials.ts";
 import { enterDir, login, upload } from "./ftp.ts";
 
-const credentials = readFtpCredentials(process.env.FTP_CREDENTIALS ?? "contentftp");
+const credentials = readFtpCredentials();
 
 if (Result.isFailure(credentials)) {
   console.error(credentials.error);

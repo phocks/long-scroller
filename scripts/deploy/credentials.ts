@@ -30,9 +30,13 @@ const findEntry = (
     : Result.fail(`No FTP entry called "${entry}" in ${path}`);
 };
 
-export const readFtpCredentials = (
-  entry: string,
-): Result.Result<Credential, string> => {
+export const readFtpCredentials = ({
+  entry = "contentftp",
+}:
+  | {
+      entry?: string;
+    }
+  | undefined = {}): Result.Result<Credential, string> => {
   return Result.pipe(
     readJson,
     Result.andThen((all) => findEntry(all, entry)),

@@ -1,16 +1,18 @@
 {
   "name": "waterfall",
-  "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.23.4"
-  },
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && node --import=tsx --env-file=.env scripts/deploy/deploy.ts"
+    "build": "astro build",
+    "deploy": "astro build && node --import=tsx --env-file=.env scripts/deploy/deploy.ts",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "allowScripts": {
+    "core-js-pure@3.51.0": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true
   },
   "dependencies": {
     "@astrojs/svelte": "^9.1.2",
@@ -20,12 +22,11 @@
     "svelte": "^5.57.3",
     "typescript": "^6.0.3"
   },
-  "allowScripts": {
-    "fsevents@2.3.3": true,
-    "esbuild@0.28.2": true
-  },
   "devDependencies": {
     "@types/node": "^26.6.6",
     "tsx": "^4.23.15"
+  },
+  "engines": {
+    "node": ">=22.23.4"
   }
 }
