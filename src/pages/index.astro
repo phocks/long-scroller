@@ -3,12 +3,41 @@ import TwoColumn from "../layouts/TwoColumn.astro";
 import Hello from "../islands/Hello.svelte";
 import ImagePicker from "../islands/ImagePicker.svelte";
 import ImageViewer from "../islands/ImageViewer.svelte";
+import { Button } from "../components/ui/button/";
+import { Separator } from "../components/ui/separator/";
+import { ArrowUpIcon } from "@lucide/astro";
+import ThemeSwitcher from "@/components/ThemeSwitcher.astro";
 ---
 
-<TwoColumn title="Long Scroller">
-  <ImageViewer client:load />
-
-  <div slot="sidebar">
+<div class="top-bar border-b border-primary">
+  <div class="space-y-1 m-4 flex justify-between items-center">
+    <div>
+      <h4 class="text-sm leading-none font-medium">long-scroller</h4>
+      <p class="text-muted-foreground text-sm">
+        A builder for interactive long-scrolling stories.
+      </p>
+    </div>
+    <div class="flex h-5 items-center space-x-4 text-sm">
+      <Separator orientation="vertical" />
+      <div>A Story Lab production</div>
+      <Separator orientation="vertical" />
+      <ThemeSwitcher client:load />
+    </div>
+  </div>
+</div>
+<TwoColumn title="Long Scroller - A Story Lab builder">
+  <div slot="content"></div>
+  <div slot="sidebar" class="sidebar">
     <ImagePicker client:load />
   </div>
 </TwoColumn>
+
+<style lang="scss">
+  .top-bar {
+    // border-bottom: 1px solid var(--border);
+    height: 48px;
+  }
+  .sidebar {
+    padding: 16px;
+  }
+</style>
