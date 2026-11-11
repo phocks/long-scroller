@@ -2,7 +2,7 @@ import { Client } from "basic-ftp";
 import { Result } from "@praha/byethrow";
 import { readFtpCredentials } from "./credentials.ts";
 import { enterDir, login, upload } from "./ftp.ts";
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 
 const FTP_ROOT_DIR = "/www/res/sites/news-projects/";
 
@@ -29,9 +29,11 @@ if (Result.isFailure(remoteDir)) {
   process.exit(1);
 }
 
+const fullDir = `${FTP_ROOT_DIR}${remoteDir.value}`;
+
 const result = await Result.pipe(
   login(client, credentials.value),
-  Result.andThen(() => enterDir(client, `${FTP_ROOT_DIR}${remoteDir.value}`)),
+  Result.andThen(() => enterDir(client, fullDir)),
   Result.andThen(() => upload(client, "dist")),
 );
 
@@ -43,6 +45,6 @@ match(result)
     process.exitCode = 1;
   })
   .with({ type: "Success" }, () => {
-    console.log(`Deployed dist/ to ${remoteDir}`);
+    console.log(`Deployed dist/ to ${fullDir}`);
   })
   .exhaustive();
