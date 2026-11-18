@@ -7,14 +7,6 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<script is:inline>
-  const saved = localStorage.getItem("theme");
-  const dark = saved
-    ? saved === "dark"
-    : matchMedia("(prefers-color-scheme: dark)").matches;
-  document.documentElement.classList.toggle("dark", dark);
-</script>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -25,8 +17,16 @@ const { title } = Astro.props;
     />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <script is:inline>
+      const saved = localStorage.getItem("theme");
+      const dark = saved
+        ? saved === "dark"
+        : matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", dark);
+    </script>
   </head>
   <body>
+    <slot />
     <div class="page bg-background text-foreground">
       <aside class="text-sidebar-foreground">
         <div class="sidebar-inner">

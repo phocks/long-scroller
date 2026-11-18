@@ -8,6 +8,8 @@
     fileName = file.name;
     image?.close();
     image = await createImageBitmap(file);
+
+    console.log(image);
   };
 </script>
 

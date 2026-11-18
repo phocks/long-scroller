@@ -20,6 +20,8 @@ const readJson = Result.try({
   catch: (cause) => `Couldn't read ${path}: ${String(cause)}`,
 });
 
+console.log(readJson);
+
 const findEntry = (
   all: Record<string, Credential>,
   entry: string,
